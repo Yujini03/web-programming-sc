@@ -1,0 +1,37 @@
+<h1>홈 페이지 내용</h1>
+<form action="/process-contact" method="POST">
+  <label for="name">name:</label><br>
+  <input type="text" id="name" name="name" value="이름"><br>
+  <label for="email">email:</label><br>
+  <input type="text" id="email" name="email" value="abc@abc.com"><br><br>
+  <input type="submit" value="Submit">
+</form>
+<h1>여행목록</h1>
+{{#if tours}}
+  <ul>
+    {{#each tours}}
+    <li>
+      {{name}} - {{price}}
+      {{#if ../currency}}
+        ({{../currency.abbrev}})
+      {{/if}}
+    </li>
+    {{/each}}
+  </ul>
+  {{#unless currency}}
+    <p>모든 가격은 {{currency.name}}표시 입니다.</p>
+  {{/unless}}
+  {{#if specialUrl}}
+    <p><a href="{{specialUrl}}">특별할인가격</a>을 확인해 보세요!</p>
+  {{else}}
+    <p>특별할인을 위하여 자주 방문해 주세요!</p>
+  {{/if}}
+  <p>
+    {{#each currencies}}
+      <a href="#" class="currency">{{.}}</a>
+    {{else}}
+      현재 결재는 {{currency.name}}만 가능합니다.
+    {{/each}}
+  </p>
+{{/if}}
+{{> weather}}

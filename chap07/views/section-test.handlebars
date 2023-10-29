@@ -1,0 +1,15 @@
+{{#section 'head'}}
+    <meta name="robots" contents="noindex">
+{{/section}}
+
+<h1>Test Page</h1>
+<p>We're testing some script stuff.</p>
+<p>Title : {{title}}</p>
+<p>Message : {{test_msg}}</p>
+
+{{#section 'scripts'}}
+    <script>
+        document.querySelector('body').insertAdjacentHTML('beforeEnd', '<small>(scripting Works!)</small>')
+    </script>
+{{/section}}
+{{> weather}}
